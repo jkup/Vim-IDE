@@ -1,1 +1,0 @@
-markdown-.vba: call delete('/Users/Kuperman/.vim/syntax/markdown.vim')|call delete('/Users/Kuperman/.vim/compiler/markdown.vim')|call delete('/Users/Kuperman/.vim/ftdetect/markdown.vim')|call delete('/Users/Kuperman/.vim/ftplugin/markdown.vim')|call delete('/Users/Kuperman/.vim/snippets/markdown.snippets')|call delete('/Users/Kuperman/.vim/doc/markdown.txt')
