@@ -1,45 +1,72 @@
-set nocompatible
-filetype off
+set nocompatible                           " Disable vi-compatibility
+set encoding=utf-8
+filetype plugin indent on
 
 " call pathogen and set it to add help tags
-call pathogen#infect()
-call pathogen#helptags()
-call pathogen#incubate()
-
-syntax on
+execute pathogen#infect()
 colorscheme tomorrow-night
 
-set number                            " display line numbers
-set tabstop=4                         " a tab is four spaces
-set shiftwidth=4                      " four spaces for auto-indenting
-set autoindent						  " always set autoindenting on
+" Gui Options
+set guioptions-=T                           " Removes top toolbar
+set guioptions-=r                           " Removes right hand scroll bar
+set go-=L                                   " Removes left hand scroll bar
+
+syntax on
+set list
+
+set number                                  " always show line numbers
+set autoindent                              " always set autoindenting on
 set smartindent
-set ignorecase                        " ignore cases for smart search to work
-set smartcase						  " smart searching for sensitivity
+set ignorecase                              " ignore case when searching
+set smartcase                               " ignore case if search pattern is all lowercase
 set incsearch
 set hlsearch
 set t_Co=256
+set clipboard=unnamed
+set linespace=15
+set visualbell                              " don't beep
+set noerrorbells                            " don't beep
+set mouse=a
+
+" Set leader key to ,
+let mapleader = ","
+let g:mapleader = ","
+
+" Down is really the next line
+nnoremap j gj
+nnoremap k gk
+
+" Swap files out of project root
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+
+" Run PHPUnit tests
+map <Leader>t :!phpunit %<cr>
+
+" Remove search results
+command! H let @/=""
 
 "Show Functions
 map<F7> <Plug>ShowFunc 
 map!<F7> <Plug>ShowFunc
 
-filetype plugin indent on
-set list
+" Abbreviations
+abbrev gm !php artisan generate:model
+abbrev gc !php artisan generate:controller
+abbrev gmig !php artisan generate:migration
 
-" Toggle Highlight Search
-nnoremap <F3> :set hlsearch!<CR>
-nnoremap <F5> :%s/\s\+$//<CR>
-nnoremap <leader>b :set hlsearch! hlsearch?<CR>
+" Laravel framework commons
+nmap <leader>lr :e app/routes.php<cr>
+nmap <leader>lca :e app/config/app.php<cr>
+nmap <leader>lcd :e app/config/database.php<cr>
+nmap <leader>lc :e composer.jso::cr>
 
-" Set leader key to ,
-let mapleader = ","
+" I don't want to pull up these folders/files when calling CtrlP
+set wildignore+=*/vendor/**
+set wildignore+=*/public/forum/**
 
-" Airline config
-let g:airline_enable_fugitive=1
-let g:airline_theme='bubblegum'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
+" Create/edit file in the current directory
+nmap :ed :edit %:p:h/
 
 " Window management hotkeys
 function! WinMove(key)
@@ -69,13 +96,13 @@ endfunction
 " Window navigate/create
 map <leader>h :call WinMove('h')<cr>
 map <leader>k :call WinMove('k')<cr>
-map <leader>l :call WinMove('l')<cr>
+" map <leader>l :call WinMove('l')<cr>
 map <leader>j :call WinMove('j')<cr>
 
 " Window moving
 map <leader>H :wincmd H<cr>
 map <leader>K :wincmd K<cr>
-map <leader>L :wincmd L<cr>
+" map <leader>L :wincmd L<cr>
 map <leader>J :wincmd J<cr>
 
 "Window Resizing
@@ -94,3 +121,12 @@ map <leader>wf :match<cr>
 
 " Copy and Paste mode
 map <leader>no :set number!<cr>:set list!<cr>
+
+" Powerline
+set rtp+=/Users/admin/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+
+"NerdTREE
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+map <C-n> :NERDTreeToggle<CR>

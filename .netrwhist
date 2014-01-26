@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/admin/Library/Python/2.7/lib/python/site-packages/powerline/config_files'
+let g:netrw_dirhist_2='/Users/admin/Code/scrolling'
+let g:netrw_dirhist_3='/Users/admin/Code/scrolling/standalone'
+let g:netrw_dirhist_4='/Library/WebServer/Documents/barracuda/bbs/lib/api'
+let g:netrw_dirhist_5='/Library/WebServer/Documents/barracuda/bbs/lib/api/backup'
+let g:netrw_dirhist_6='/Applications/MAMP/htdocs/screencasts/app/views/welcome'
+let g:netrw_dirhist_7='/Users/admin/Code/twitter/bucket'
