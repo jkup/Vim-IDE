@@ -258,5 +258,12 @@ snippet website
 		${1}
 	</body>
 	</html>
-snippet phpunit
-	PHPUnit_Framework_TestCase
+snippet newform
+	{{ Form::open() }}
+		${1}
+	{{ Form::close() }}
+snippet formfield
+	<div>
+		{{ Form::label('${1}', '${2}') }}
+		{{ Form::text('${3}') }}
+	</div>

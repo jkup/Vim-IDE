@@ -4,7 +4,7 @@ filetype plugin indent on
 
 " call pathogen and set it to add help tags
 execute pathogen#infect()
-colorscheme tomorrow-night
+colorscheme molokai
 
 " Gui Options
 set guioptions-=T                           " Removes top toolbar
